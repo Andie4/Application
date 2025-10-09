@@ -23,6 +23,7 @@ const Home = () => (
   
       </View>
     );
+    
   
 
   const styles = StyleSheet.create({
