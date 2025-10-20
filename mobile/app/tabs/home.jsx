@@ -8,15 +8,14 @@ import { Link } from 'expo-router';
 const Home = () => (
 
       <View style={styles.view}>
-          <Image style={styles.tinyLogo} source={require('../medias/black-disney.png')}/>
+          <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
           <Text>Content de vous revoir ! Que comptez-vous regarder aujourd'hui ?</Text>
         <View style={styles.infos}>
           <Text>Les différents studios :</Text>
           <View style={styles.banners}>
-            <Link href="marvel"><Image style={styles.banner} source={require('../medias/marvel-banner.png')}/> </Link>
-            <Link href="disney"><Image style={styles.banner} source={require('../medias/disney-banner.png')}/> </Link>
-            <Link href="pixar"><Image style={styles.banner} source={require('../medias/pixar-banner.png')}/> </Link>
-            <Link href="marvel" style={{flex: 1, alignItems: "center"}}>Profil</Link>
+            <Link href="tabs/marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
+            <Link href="tabs/disney"><Image style={styles.banner} source={require('../../medias/disney-banner.png')}/> </Link>
+            <Link href="tabs/pixar"><Image style={styles.banner} source={require('../../medias/pixar-banner.png')}/> </Link>
 
           </View>
         </View>

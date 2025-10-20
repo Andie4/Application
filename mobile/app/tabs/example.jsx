@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlatList, Text } from "react-native";
-import api from "../services/api";
+import api from "../../services/api";
 
 export default function Example() {
   const [lists, setLists] = useState([]);

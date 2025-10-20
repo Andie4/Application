@@ -8,10 +8,10 @@ import { Link } from 'expo-router';
 const Marvel = () => (
 
       <View style={styles.view}>
-          <Image style={styles.tinyLogo} source={require('../medias/black-disney.png')}/>
+          <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
         <View style={styles.infos}>
           <View style={styles.banners}>
-            <Link href="marvel"><Image style={styles.banner} source={require('../medias/marvel-banner.png')}/> </Link>
+            <Link href="marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
             <Text>Studio Marvel :</Text>
           </View>
           <View>

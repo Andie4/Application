@@ -35,7 +35,7 @@ const App = () => {
         console.log("Token JWT:", data.token);
 
         // Redirection vers la page home
-        router.push("/home");
+        router.push("tabs/home");
       } else {
         Alert.alert("Erreur", data.message || "Email ou mot de passe invalide");
       }
