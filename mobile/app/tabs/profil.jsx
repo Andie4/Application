@@ -1,6 +1,6 @@
 import { Text, View, Button } from "react-native";
 import { StyleSheet } from "react-native";
-import { Image } from 'expo-image';
+import { Image, ImageBackground } from 'expo-image';
 import useAuthStore from "../../store/authStore";
 import { router } from "expo-router";
 
@@ -16,8 +16,9 @@ const Profil = () => {
   };
 
   return (
+  <ImageBackground source={require('../../medias/background-profil.png')} style={profilStyles.fond}>
     <View style={profilStyles.view}>
-      <Image style={profilStyles.tinyLogo} source={require('../../medias/white-disney.png')}/>
+
 
       <View style={profilStyles.infos}>
         <View style={profilStyles.account}>
@@ -32,26 +33,37 @@ const Profil = () => {
       </View>
 
     </View>
+  </ImageBackground>
   );
 };
 
 const profilStyles = StyleSheet.create({
+  fond: {
+      height: '950',
+      // width: '100%',    
+  },
+  titre: {
+      // fontSize: 30,
+      // fontWeight: 'bold',
+      // color: 'white',
+      // marginTop: 80,
+      // marginBottom: 20,
+  },
   account: {
       justifyContent: 'center',
       flexDirection: 'row'
   },
   view:{
       alignItems: 'center',
-      backgroundColor: '#01147C',
+      // backgroundColor: '#01147C',
   },
   infos: {
       borderRadius: 50,
-      backgroundColor: 'white',
       width:390,
       height: 400,
       alignItems:'center',
-      marginBottom: 300,
-      marginTop: 70,
+      marginBottom: 200,
+      marginTop: 250,
   },
   tinyLogo: {
     marginTop: 20,
@@ -64,10 +76,10 @@ const profilStyles = StyleSheet.create({
     marginBottom: 50,
   },
   pdp: {
-    width: 100,
-    height: 100,
-    top:-55,
-    left: 20,
+    width: 130,
+    height: 130,
+    top:-90,
+    left: 30,
   },
   edit: {
     width: 30,
