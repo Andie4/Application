@@ -10,7 +10,7 @@ const Schema = new mongoose.Schema(
     last_name: { type: String, trim: true },
     password: { type: String, required: true },
     last_login_at: { type: Date, default: Date.now },
-    age: { type: Number, required: true }
+    age: { type: Number, required: false }
 
   },
   { timestamps: true }
