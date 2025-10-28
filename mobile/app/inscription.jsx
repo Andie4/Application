@@ -1,50 +1,75 @@
 import { Link } from 'expo-router';
-import React from 'react';
-import { Button, ImageBackground, StyleSheet, Text, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, ImageBackground, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import api from '../services/api'; 
 
+const App = () => {
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-const App = () => (
-  <ImageBackground source={require('../medias/background-connection2.png')} resizeMode="stretch" style={styles.image}>
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container} edges={['left', 'right']}>
-        <View style={styles.conn}>
-          <Text style={styles.titre}>Inscription</Text>
+  const handleSignup = async () => {
+    if (!email || !password || !confirmPassword) {
+      return Alert.alert("Erreur", "Tous les champs sont obligatoires");
+    }
+    if (password !== confirmPassword) {
+      return Alert.alert("Erreur", "Les mots de passe ne correspondent pas");
+    }
 
-          <View style={styles.groupe}>
-            <Text style={styles.label}>E-mail :</Text>
-            <TextInput placeholder="Votre email" style={styles.input}/>
+    try {
+      const response = await api.post("/user/signup", {
+        email,
+        password,
+        age,
+      });
+      Alert.alert("Succès", "Compte créé !");
+    } catch (error) {
+      Alert.alert("Erreur", "Un problème est survenu lors de l’inscription");
+    }
+  };
+
+  return (
+    <ImageBackground source={require('../medias/background-connection2.png')} resizeMode="stretch" style={styles.image}>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container} edges={['left', 'right']}>
+          <View style={styles.conn}>
+            <Text style={styles.titre}>Inscription</Text>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>E-mail :</Text>
+              <TextInput placeholder="Votre email" style={styles.input} value={email} onChangeText={setEmail} keyboardType="email-address"/>
+            </View>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>Âge :</Text>
+              <TextInput placeholder="Votre âge" style={styles.input} value={age} onChangeText={setAge} keyboardType="numeric"/>
+            </View>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>Mot de passe :</Text>
+              <TextInput placeholder="Votre mot de passe" style={styles.input} secureTextEntry value={password} onChangeText={setPassword}/>
+            </View>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>Confirmation du mot de passe :</Text>
+              <TextInput placeholder="Confirmez votre mot de passe" style={styles.input} secureTextEntry  value={confirmPassword}  onChangeText={setConfirmPassword}/>
+            </View>
+
+            <View style={{ marginTop: 50 }}>
+              <Button title="Valider" color="#1e3a8a" onPress={handleSignup} />
+            </View>
+
+            <Link href="home" style={{ marginTop: 20, color: 'white' }}>
+              Vous avez un compte ? Connexion
+            </Link>
           </View>
-
-          <View style={styles.groupe}>
-            <Text style={styles.label}>Âge :</Text>
-            <TextInput placeholder="Votre âge" secureTextEntry style={styles.input}/>
-          </View>
-          <View style={styles.groupe}>
-            <Text style={styles.label}>Mot de passe :</Text>
-            <TextInput placeholder="Votre mot de passe" secureTextEntry style={styles.input}/>
-          </View>
-
-          <View style={styles.groupe}>
-            <Text style={styles.label}>Confirmation du mot de passe :</Text>
-            <TextInput placeholder="Votre mot de passe" secureTextEntry style={styles.input}/>
-          </View>
-
-            <Button title="valider" style={styles.valid}></Button>
-            
-            <Link href="profil" style={{flex: 1, alignItems: "center"}}>Profil</Link>
-            <Link href="home" style={{flex: 1, alignItems: "center"}}>Accueil</Link>    
-
-            <Link href="home" style={{flex: 1, alignItems: "center", marginTop: 20, color: 'white'}}>Vous avez un compte ?  Connexion</Link>
-        </View>
- 
-
-
-      </SafeAreaView>
-    </SafeAreaProvider>
-  </ImageBackground>
-
-);
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </ImageBackground>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
