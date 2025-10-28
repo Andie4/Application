@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // require("./Services/passport")(app);
 
+// permet d'acceder aux routes de user ( signup et signin)
 app.use("/user", require("./Controllers/user"));
 
 
