@@ -27,7 +27,7 @@ module.exports = function (app) {
       return done(null, false);
     })
   );
-
+// pas utilisé a ce stade il faut le rajouter dans le controller/user 
   passport.use(
     "admin",
     new JwtStrategy(opts, async function (jwtPayload, done) {
