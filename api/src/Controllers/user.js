@@ -13,6 +13,7 @@ const JWT_MAX_AGE = "6m"; // 6 months
 
 //signup 
 router.post("/signup", async (req, res) => {
+  //visualisation des données envoyées 
   console.log("données envoyées:", req.body); 
 
     try {
