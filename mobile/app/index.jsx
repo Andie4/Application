@@ -1,6 +1,6 @@
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Button, ImageBackground, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import useAuthStore from "../store/authStore";
 
@@ -47,9 +47,9 @@ const App = () => {
 
   return (
     
-    <ImageBackground source={require('../medias/background-connection2.png')} resizeMode="stretch" style={styles.image}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
+          <Image  source={require('../medias/background-connection2.png')}  style={styles.image}></Image>
           <View style={styles.conn}>
             <Text style={styles.titre}>Connexion</Text>
 
@@ -81,7 +81,6 @@ const App = () => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
-    </ImageBackground>
   );
 };
 
@@ -92,12 +91,11 @@ const styles = StyleSheet.create({
   conn: {
     zIndex: 2,
     backgroundColor: '#01147C',
-    paddingBottom: 100,
-    marginTop: 250,
     borderRadius: 40,
     width: '100%',
-    height: 650,
-    alignItems: 'center'
+    height: 700,
+    alignItems: 'center',
+    top: -20,
   },
   titre: { 
     fontWeight: 'bold', 
@@ -120,11 +118,11 @@ const styles = StyleSheet.create({
     marginTop: 5
   },
   image: { 
-    flex: 1, 
     justifyContent: 'center',
+    top: 0,
     width: '100%',
-    height: 300,
-  top: 0,
+    height: 250,
+    marginBottom: -15,
   },
 });
 

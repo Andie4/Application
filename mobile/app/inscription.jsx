@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
 import React, { useState } from 'react';
-import { Button, ImageBackground, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import { Button, Image, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import api from '../services/api'; 
 
@@ -31,9 +31,10 @@ const App = () => {
   };
 
   return (
-    <ImageBackground source={require('../medias/background-connection2.png')} resizeMode="stretch" style={styles.image}>
+
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
+          <Image source={require('../medias/background-connection2.png')}   style={styles.image}></Image>
           <View style={styles.conn}>
             <Text style={styles.titre}>Inscription</Text>
 
@@ -57,8 +58,8 @@ const App = () => {
               <TextInput placeholder="Confirmez votre mot de passe" style={styles.input} secureTextEntry  value={confirmPassword}  onChangeText={setConfirmPassword}/>
             </View>
 
-            <View style={{ marginTop: 50 }}>
-              <Button title="Valider" color="#1e3a8a" onPress={handleSignup} />
+            <View style={styles.test}>
+              <Button title="Valider" style={styles.validation} onPress={handleSignup} />
             </View>
 
             <Link href="home" style={{ marginTop: 20, color: 'white' }}>
@@ -67,24 +68,23 @@ const App = () => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
-    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%',
   },
   conn: {
     zIndex: 2,
     backgroundColor: '#01147C',
-    paddingBottom: 100,
-    marginTop: 200,
     borderRadius: 40,
     width: '100%',
-    height: 620,
-    alignItems: 'center'
+    height: 700,
+    alignItems: 'center',
+    top: -20,
     
   },
   titre:{
@@ -103,15 +103,19 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   input: {
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    width: 250,
+    height: 40 ,
+    borderRadius: 10,
+    marginTop: 5,
   }
   ,
   image: {
-    zIndex: -1,
-    flex: 1,
     justifyContent: 'center',
     top: 0,
     width: '100%',
+    height: 250,
+    marginBottom: -15,
   },
   tinyLogo: {
     height: 60,
@@ -119,15 +123,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center'
   },
-  valid: {
-    marginTop: 50,
-    backgroundColor: 'red',
+  test :{
+    backgroundColor: 'pink',
+    color: 'green',
     borderRadius: 20,
-    width: 200,
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'white'
+    marginTop: 40,
+  }
+  ,
+  validation : {
+    color: 'green'
   }
   
 });
