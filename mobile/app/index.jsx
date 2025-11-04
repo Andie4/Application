@@ -1,6 +1,6 @@
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Button, Image, StyleSheet, Text, TextInput, View } from "react-native";
+import { Alert, Button, Image, StyleSheet, Text, TextInput, View, } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import useAuthStore from "../store/authStore";
 
@@ -75,7 +75,9 @@ const App = () => {
               />
             </View>
 
-            <Link href="inscription" style={{ flex: 1, alignItems: "center", marginTop: 20, color: 'white' }}>Vous n'avez pas de compte ? Inscription</Link>
+            <Link href="inscription" style={{ flex: 1, alignItems: "center", marginTop: 20, color: 'white' }}>Vous n'avez pas de compte ? 
+              <Text style={styles.lien}>Inscription</Text> 
+            </Link>
 
             <Button title="Valider" onPress={handleLogin} />
           </View>
@@ -124,6 +126,9 @@ const styles = StyleSheet.create({
     height: 250,
     marginBottom: -15,
   },
+  lien : {
+    textDecorationLine: 'underline'
+  }
 });
 
 export default App;

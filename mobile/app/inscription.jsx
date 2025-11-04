@@ -63,7 +63,8 @@ const App = () => {
             </View>
 
             <Link href="home" style={{ marginTop: 20, color: 'white' }}>
-              Vous avez un compte ? Connexion
+              Vous avez un compte ? 
+              <Text style={styles.lien}>Connexion</Text>
             </Link>
           </View>
         </SafeAreaView>
@@ -125,13 +126,16 @@ const styles = StyleSheet.create({
   },
   test :{
     backgroundColor: 'pink',
-    color: 'green',
+    borderColor: 'yellow',
     borderRadius: 20,
     marginTop: 40,
-  }
-  ,
+  },
   validation : {
+    // ne fonctionne pas la couleur du title ne change pas 
     color: 'green'
+  },
+  lien : {
+    textDecorationLine: 'underline'
   }
   
 });
