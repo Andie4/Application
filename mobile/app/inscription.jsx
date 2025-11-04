@@ -62,9 +62,9 @@ const App = () => {
               <Button title="Valider" style={styles.validation} onPress={handleSignup} />
             </View>
 
-            <Link href="home" style={{ marginTop: 20, color: 'white' }}>
+            <Link href="/" style={{ marginTop: 20, color: 'white' }}>
               Vous avez un compte ? 
-              <Text style={styles.lien}>Connexion</Text>
+              <Text style={styles.lien}> Connexion</Text>
             </Link>
           </View>
         </SafeAreaView>

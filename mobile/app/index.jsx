@@ -76,7 +76,7 @@ const App = () => {
             </View>
 
             <Link href="inscription" style={{ flex: 1, alignItems: "center", marginTop: 20, color: 'white' }}>Vous n'avez pas de compte ? 
-              <Text style={styles.lien}>Inscription</Text> 
+              <Text style={styles.lien}> Inscription</Text> 
             </Link>
 
             <Button title="Valider" onPress={handleLogin} />
