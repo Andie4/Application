@@ -75,11 +75,14 @@ const App = () => {
               />
             </View>
 
-            <Link href="inscription" style={{ flex: 1, alignItems: "center", marginTop: 20, color: 'white' }}>Vous n'avez pas de compte ? 
+            <Link href="inscription" style={{ alignItems: "center", marginTop: 20, color: 'white' }}>Vous n'avez pas de compte ? 
               <Text style={styles.lien}> Inscription</Text> 
             </Link>
+            
+            <View style={styles.test}>  
+              <Button title="Valider" onPress={handleLogin} style={styles.validation} />
+            </View>
 
-            <Button title="Valider" onPress={handleLogin} />
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
@@ -91,13 +94,15 @@ const styles = StyleSheet.create({
     flex: 1, 
     alignItems: 'center' },
   conn: {
-    zIndex: 2,
+    // zIndex: 2,
     backgroundColor: '#01147C',
     borderRadius: 40,
     width: '100%',
     height: 700,
     alignItems: 'center',
     top: -20,
+    borderWidth: 2,
+    // borderColor: 'white',
   },
   titre: { 
     fontWeight: 'bold', 
@@ -127,8 +132,30 @@ const styles = StyleSheet.create({
     marginBottom: -15,
   },
   lien : {
-    textDecorationLine: 'underline'
-  }
+    textDecorationLine: 'underline',
+    marginBottom: 0,
+    borderWidth: 2,
+    borderColor: 'red',
+    width: '100%',
+    height:20,
+
+  },
+  validation : {
+    color: 'white',
+    backgroundColor: 'red',
+    marginTop: 40,
+  },
+  test :{
+    backgroundColor: '#01147C',
+    borderRadius: 10,
+    marginTop: 40,
+    borderColor: 'white',
+    borderWidth: 2,
+    width: 150,
+    height: 50, 
+    display: 'flex',
+    justifyContent : 'center',
+  },
 });
 
 export default App;

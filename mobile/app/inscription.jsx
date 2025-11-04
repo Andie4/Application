@@ -104,11 +104,12 @@ const styles = StyleSheet.create({
     marginTop: 40
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: '#38458E',
     width: 250,
     height: 40 ,
     borderRadius: 10,
     marginTop: 5,
+    padding: 10
   }
   ,
   image: {
@@ -125,10 +126,15 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   test :{
-    backgroundColor: 'pink',
-    borderColor: 'yellow',
-    borderRadius: 20,
+    backgroundColor: '#01147C',
+    borderRadius: 10,
     marginTop: 40,
+    borderColor: 'white',
+    borderWidth: 2,
+    width: 150,
+    height: 50, 
+    display: 'flex',
+    justifyContent : 'center',
   },
   validation : {
     // ne fonctionne pas la couleur du title ne change pas 
