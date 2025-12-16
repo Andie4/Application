@@ -37,4 +37,9 @@ router.post("/add", async (req, res) => {
         }
 );
 
+//afficher la liste des films 
+router.get("/list", async (req, res) => {
+   
+});
+
 module.exports = router;
