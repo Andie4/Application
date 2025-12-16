@@ -2,7 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 2222;
+const port = 3000;
 const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
@@ -27,6 +27,6 @@ app.get("/", (req, res) => {
   res.send("API - Last deploy: " + new Date().toISOString());
 });
 
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Serveur en écoute sur http://0.0.0.0:${port}`);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
 });
