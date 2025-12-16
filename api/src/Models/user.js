@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const MODELNAME = "user";
+//⚠️ chercher pourquoi en bdd le nom de la table est users et pas user
 
 const Schema = new mongoose.Schema(
   {
