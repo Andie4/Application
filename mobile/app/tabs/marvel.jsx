@@ -2,6 +2,7 @@ import { Text, View,Ul, Li } from "react-native";
 import { StyleSheet } from "react-native";
 import { Image } from 'expo-image';
 import { Link } from 'expo-router';
+// import { listMarvel } from './data'
 
 
 
@@ -10,16 +11,11 @@ const Marvel = () => (
       <View style={styles.view}>
           <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
         <View style={styles.infos}>
-          <View style={styles.banners}>
+          {/* <View style={styles.banners}>
             <Link href="marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
-            <Text>Studio Marvel :</Text>
-          </View>
-          <View>
-            <Link href="profil" style={{flex: 1, alignItems: "center"}}>Profil</Link>
-            <Link href="home">Accueil</Link>
+          </View> */}
+          <Text>Les films du studios Marvel :</Text>
 
-
-          </View>
         </View>
   
       </View>
@@ -41,7 +37,7 @@ const Marvel = () => (
 
     },
     tinyLogo: {
-      marginTop: 20,
+      marginTop: 50,
       height: 60,
       width: 170,
     },

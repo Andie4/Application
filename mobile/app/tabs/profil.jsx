@@ -40,6 +40,7 @@ const Profil = () => {
 const profilStyles = StyleSheet.create({
   fond: {
       height: '950',
+      marginTop: 0,
       // width: '100%',    
   },
   titre: {

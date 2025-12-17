@@ -6,7 +6,7 @@ const filmSchema = new mongoose.Schema(
 
     {
         nom: { type: String, required: true },
-        date: { type: Date, required: true },
+        date: { type: Number, required: true },
         realisateur: { type: String, required: true },
     },
     { timestamps: true }
