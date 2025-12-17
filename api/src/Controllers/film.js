@@ -5,9 +5,12 @@ const router = express.Router();
 
 const FilmObject = require("../Models/film");
 
+
+
 // const { connection } = require("mongoose");
 
 // const JWT_MAX_AGE = "6m"; // 6 months
+ 
 
 
 //ajouter un film 
@@ -39,7 +42,12 @@ router.post("/add", async (req, res) => {
 
 //afficher la liste des films 
 router.get("/list", async (req, res) => {
-   
+    const filmList = await FilmObject.find(); 
+    console.log('les films sont affichés !')
+    console.log(filmList);              
+    res.status(200).json(filmList);
+
 });
 
 module.exports = router;
+
