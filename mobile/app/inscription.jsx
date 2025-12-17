@@ -7,6 +7,8 @@ import api from '../services/api';
 const App = () => {
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
+  const [first_name, setFirst_name] = useState('');
+  const [last_name, setLast_name] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -23,6 +25,8 @@ const App = () => {
         email,
         password,
         age,
+        first_name,
+        last_name,
       });
       Alert.alert("Succès", "Compte créé !");
     } catch (error) {
@@ -34,13 +38,22 @@ const App = () => {
     <TouchableWithoutFeedback  onPress={Keyboard.dismiss}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
-          <Image source={require('../medias/background-connection2.png')}   style={styles.image}></Image>
           <View style={styles.conn}>
             <Text style={styles.titre}>Inscription</Text>
 
             <View style={styles.groupe}>
               <Text style={styles.label}>E-mail :</Text>
               <TextInput placeholder="Votre email" style={styles.input} value={email} onChangeText={setEmail} keyboardType="email-address"/>
+            </View>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>Votre prénom</Text>
+              <TextInput placeholder="Votre prénom" style={styles.input} value={first_name} onChangeText={setFirst_name}/>
+            </View>
+
+            <View style={styles.groupe}>
+              <Text style={styles.label}>Votre nom</Text>
+              <TextInput placeholder="Votre nom" style={styles.input} value={last_name} onChangeText={setLast_name}/>
             </View>
 
             <View style={styles.groupe}>
@@ -84,9 +97,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#01147C',
     borderRadius: 40,
     width: '100%',
-    height: 700,
+    height: "100%",
     alignItems: 'center',
-    top: -20,
+    top: 0,
     
   },
   titre:{
@@ -111,14 +124,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginTop: 5,
     padding: 10
-  }
-  ,
-  image: {
-    justifyContent: 'center',
-    top: 0,
-    width: '100%',
-    height: 250,
-    marginBottom: -15,
   },
   tinyLogo: {
     height: 60,
@@ -140,7 +145,12 @@ const styles = StyleSheet.create({
   },
   validation : {
     // ne fonctionne pas la couleur du title ne change pas 
-    color: 'green'
+    color: 'white',
+    // borderWidth: 2,
+    fontSize: 20,
+    // backgroundColor: "#e63946",
+    width: "100%",
+    textAlign: 'center',
   },
   lien : {
     textDecorationLine: 'underline'
