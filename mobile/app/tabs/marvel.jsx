@@ -1,26 +1,57 @@
 import { Text, View,Ul, Li } from "react-native";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Button, Alert } from "react-native";
 import { Image } from 'expo-image';
-import { Link } from 'expo-router';
+// import { Link } from 'expo-router';
 // import { listMarvel } from './data'
+import { useState } from 'react';
 
 
 
-const Marvel = () => (
+
+const Marvel = () => {
+  const [films, setFilms] = useState([]) 
+
+
+  const fetchList = async () => {
+    try {
+      const elementList = await fetch('http://172.20.10.2:3000/film/list',{
+        method: "GET", 
+        headers: { "Content-Type": "application/json" },
+
+      });
+      
+      
+      const data = await elementList.json();
+      setFilms(data)
+      console.log(data)
+
+      
+
+    } catch (eror) {
+      Alert.alert("erreur lors de l'affichage des films")
+    }
+  };
+
+
+  return (
 
       <View style={styles.view}>
           <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
         <View style={styles.infos}>
-          {/* <View style={styles.banners}>
-            <Link href="marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
-          </View> */}
-          <Text>Les films du studios Marvel :</Text>
+          <Text style={styles.nomFilm}>Les films du studios Marvel :</Text>   
 
+            {films.map((film) => (
+              <Text key={film._id} style={{ marginBottom: 10 }}>
+                <Text>{film.nom}</Text>
+                <Text>{film.date}</Text>
+                <Text>{film.realisateur}</Text>
+              </Text>
+          ))};
         </View>
   
       </View>
     );
-  
+  };
 
   const styles = StyleSheet.create({
 
@@ -55,6 +86,11 @@ const Marvel = () => (
       height: 150,
       marginBottom: 10,
       border: '1px solid black',
+    },
+    nomFilm: {
+      fontWeight: "bold",
+      fontSize: 25,
+      marginBottom: 50,
     }
 
     
