@@ -8,7 +8,6 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [first_name, setFirst_name] = useState('');
-  const [last_name, setLast_name] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -26,7 +25,6 @@ const App = () => {
         password,
         age,
         first_name,
-        last_name,
       });
       Alert.alert("Succès", "Compte créé !");
     } catch (error) {
@@ -49,11 +47,6 @@ const App = () => {
             <View style={styles.groupe}>
               <Text style={styles.label}>Votre prénom</Text>
               <TextInput placeholder="Votre prénom" style={styles.input} value={first_name} onChangeText={setFirst_name}/>
-            </View>
-
-            <View style={styles.groupe}>
-              <Text style={styles.label}>Votre nom</Text>
-              <TextInput placeholder="Votre nom" style={styles.input} value={last_name} onChangeText={setLast_name}/>
             </View>
 
             <View style={styles.groupe}>

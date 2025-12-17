@@ -17,7 +17,7 @@ router.post("/signup", async (req, res) => {
   console.log("données envoyées:", req.body); 
 
     try {
-      let { email, password, first_name, last_name, age } = req.body;
+      let { email, password, first_name,age } = req.body;
       email = (email || "").trim().toLowerCase();
   
       if (!email || !password) {
@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
       }
   
       // nouvel utilisateur
-      const user = new UserObject({ email, password, first_name, last_name, age });
+      const user = new UserObject({ email, password, first_name, age });
       await user.save();
   
       res.status(201).send({ ok: true, data: user });
