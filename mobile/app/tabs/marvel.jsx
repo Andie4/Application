@@ -38,15 +38,15 @@ const Marvel = () => {
       <View style={styles.view}>
           <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
         <View style={styles.infos}>
-          <Text style={styles.nomFilm}>Les films du studios Marvel :</Text>   
-
-            {films.map((film) => (
-              <Text key={film._id} style={{ marginBottom: 10 }}>
-                <Text>{film.nom}</Text>
-                <Text>{film.date}</Text>
-                <Text>{film.realisateur}</Text>
-              </Text>
-          ))};
+          <Text>Les films du studios Marvel :</Text>   
+           
+        {films.map((film) => (
+          <View key={film._id} style={{ marginBottom: 10 }}>
+            <Text>{film.nom}</Text>
+            <Text>{film.date}</Text>
+            <Text>{film.realisateur}</Text>
+          </View>
+      ))};
         </View>
   
       </View>
@@ -86,11 +86,6 @@ const Marvel = () => {
       height: 150,
       marginBottom: 10,
       border: '1px solid black',
-    },
-    nomFilm: {
-      fontWeight: "bold",
-      fontSize: 25,
-      marginBottom: 50,
     }
 
     
