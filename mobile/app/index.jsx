@@ -1,6 +1,6 @@
 import { Link, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Button, Image, StyleSheet, Text, TextInput, View, } from "react-native";
+import { Alert, Button, Image, StyleSheet, Text, TextInput, View,TouchableWithoutFeedback, Keyboard } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 import useAuthStore from "../store/authStore";
 
@@ -46,7 +46,7 @@ const App = () => {
   };
 
   return (
-    
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
           <Image  source={require('../medias/background-connection2.png')}  style={styles.image}></Image>
@@ -86,6 +86,7 @@ const App = () => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
+    </TouchableWithoutFeedback> 
   );
 };
 
@@ -159,3 +160,4 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+// touchableWithoutfeedback onpress keybaord .dimiss à ajouter sur les pages avec l'utilisation du clavier 

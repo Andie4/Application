@@ -1,8 +1,11 @@
-import { Text, View, Button } from "react-native";
+import { Text, View, Button, TouchableOpacity } from "react-native";
 import { StyleSheet } from "react-native";
-import { Image, ImageBackground } from 'expo-image';
+import { Image, ImageBackground, } from 'expo-image';
 import useAuthStore from "../../store/authStore";
 import { router } from "expo-router";
+// import { Ionicons } from "@expo/vector-icons";
+
+
 
 const Profil = () => {
   // fonction de déconnexion (dans le store)
@@ -28,7 +31,11 @@ const Profil = () => {
         <Text style={profilStyles.donnees}>Pseudo :leromeipsum</Text>
         <Text style={profilStyles.donnees}>Mail : Lorem Ipsum</Text>
         <Text style={profilStyles.donnees}>Âge : 21 ans</Text>
-        <Button title="Déconnexion" onPress={handleLogout} color="#e63946" />
+        <TouchableOpacity style={profilStyles.logOut} onPress={handleLogout}>
+          <Text styles={profilStyles.textLogOut}>Déconnexion </Text>
+        </TouchableOpacity>
+
+        {/* <Ionicons name="logout"/> */}
 
       </View>
 
@@ -42,6 +49,16 @@ const profilStyles = StyleSheet.create({
       height: '950',
       marginTop: 0,
       // width: '100%',    
+  },
+  logOut: {
+    color:"#e63946",
+    padding: 4,
+    borderWidth: 1,
+    borderColor: "#e63946",
+    borderRadius: 40,
+  },
+  textLogOut :{
+    fontWeight: "bold"    //  -----> pas pris en compter chercher pourquoi 
   },
   titre: {
       // fontSize: 30,
@@ -88,7 +105,8 @@ const profilStyles = StyleSheet.create({
     zIndex: 2,
     left:5,
     top:5,
-  }
+  },
+  
 });
 
 export default Profil;

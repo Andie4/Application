@@ -1,6 +1,6 @@
 import { Link } from 'expo-router';
-import React, { useState } from 'react';
-import { Button, Image, StyleSheet, Text, TextInput, View, Alert } from 'react-native';
+import { useState } from 'react';
+import { Button, Image, StyleSheet, Text, TextInput, View, Alert, Keyboard, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import api from '../services/api'; 
 
@@ -31,7 +31,7 @@ const App = () => {
   };
 
   return (
-
+    <TouchableWithoutFeedback  onPress={Keyboard.dismiss}>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} edges={['left', 'right']}>
           <Image source={require('../medias/background-connection2.png')}   style={styles.image}></Image>
@@ -58,9 +58,9 @@ const App = () => {
               <TextInput placeholder="Confirmez votre mot de passe" style={styles.input} secureTextEntry  value={confirmPassword}  onChangeText={setConfirmPassword}/>
             </View>
 
-            <View style={styles.test}>
-              <Button title="Valider" style={styles.validation} onPress={handleSignup} />
-            </View>
+            <TouchableOpacity style={styles.test}>
+              <Text title="Valider" style={styles.validation} onPress={handleSignup}>Valider</Text>
+            </TouchableOpacity>
 
             <Link href="/" style={{ marginTop: 20, color: 'white' }}>
               Vous avez un compte ? 
@@ -69,6 +69,7 @@ const App = () => {
           </View>
         </SafeAreaView>
       </SafeAreaProvider>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -135,6 +136,7 @@ const styles = StyleSheet.create({
     height: 50, 
     display: 'flex',
     justifyContent : 'center',
+    color: 'white'
   },
   validation : {
     // ne fonctionne pas la couleur du title ne change pas 
