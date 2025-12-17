@@ -25,14 +25,13 @@ const Profil = () => {
 
       <View style={profilStyles.infos}>
         <View style={profilStyles.account}>
-          <Image style={profilStyles.pdp} source={require('../../medias/pdp.png')}/>
-          <Image style={profilStyles.edit} source={require('../../medias/edit.png')}/> 
+          <Image style={profilStyles.pdp} source={require('../../medias/pdpUser.jpg')}/>
         </View>
         <Text style={profilStyles.donnees}>Pseudo :leromeipsum</Text>
         <Text style={profilStyles.donnees}>Mail : Lorem Ipsum</Text>
         <Text style={profilStyles.donnees}>Âge : 21 ans</Text>
         <TouchableOpacity style={profilStyles.logOut} onPress={handleLogout}>
-          <Text styles={profilStyles.textLogOut}>Déconnexion </Text>
+          <Text style={profilStyles.textLogOut}>Déconnexion </Text>
         </TouchableOpacity>
 
         {/* <Ionicons name="logout"/> */}
@@ -51,14 +50,22 @@ const profilStyles = StyleSheet.create({
       // width: '100%',    
   },
   logOut: {
-    color:"#e63946",
-    padding: 4,
-    borderWidth: 1,
+    padding: "auto",
+    borderWidth: 2,
     borderColor: "#e63946",
-    borderRadius: 40,
+    borderRadius: 10,
+    fontSize: 30,
+    backgroundColor: "#e63946",
+    marginTop: 50,
+    width: 135,
+    height: 50, 
+    display: 'flex',
+    justifyContent : 'center',
   },
   textLogOut :{
-    fontWeight: "bold"    //  -----> pas pris en compter chercher pourquoi 
+    fontWeight: "bold",    //  -----> pas pris en compter chercher pourquoi 
+    fontSize: 25,
+    color: "white",
   },
   titre: {
       // fontSize: 30,
@@ -69,7 +76,6 @@ const profilStyles = StyleSheet.create({
   },
   account: {
       justifyContent: 'center',
-      flexDirection: 'row'
   },
   view:{
       alignItems: 'center',
@@ -97,7 +103,7 @@ const profilStyles = StyleSheet.create({
     width: 130,
     height: 130,
     top:-90,
-    left: 30,
+    borderRadius: 65,
   },
   edit: {
     width: 30,
