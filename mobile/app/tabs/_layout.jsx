@@ -11,6 +11,7 @@ export default function TabsLayout() {
       <Tabs.Screen name="marvel" options={{ title: "Marvel",headerShown: false, tabBarIcon: ({ color, size }) => <Ionicons name="list" size={size} color={color} /> }}/>
 
       <Tabs.Screen name="profil" options={{ title: "Profil", headerShown: false, tabBarIcon: ({ color, size }) => <Ionicons name="person-outline" size={size} color={color} /> }}/>
+
     </Tabs>
   );
 }

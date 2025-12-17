@@ -11,11 +11,11 @@ const Home = () => (
           <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
           <Text>Content de vous revoir ! Que comptez-vous regarder aujourd'hui ?</Text>
         <View style={styles.infos}>
-          <Text>Les différents studios :</Text>
+          <Text style={styles}>Les différents studios :</Text>
           <View style={styles.banners}>
             <Link href="tabs/marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
-            <Link href="tabs/disney"><Image style={styles.banner} source={require('../../medias/disney-banner.png')}/> </Link>
-            <Link href="tabs/pixar"><Image style={styles.banner} source={require('../../medias/pixar-banner.png')}/> </Link>
+            {/* <Link href="tabs/disney"><Image style={styles.banner} source={require('../../medias/disney-banner.png')}/> </Link>
+            <Link href="tabs/pixar"><Image style={styles.banner} source={require('../../medias/pixar-banner.png')}/> </Link> */}
 
           </View>
         </View>
@@ -40,7 +40,7 @@ const Home = () => (
 
     },
     tinyLogo: {
-      marginTop: 20,
+      marginTop: 50,
       height: 60,
       width: 170,
     },

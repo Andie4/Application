@@ -1,5 +1,6 @@
 # dependencies
 node_modules
+node_modules_backup
 
 # Expo
 package.json
