@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, Alert } from "react-native";
+import { Text, View, StyleSheet, Alert, ScrollView } from "react-native";
 import { Image } from "expo-image";
 import { useEffect, useState } from "react";
 import { Checkbox } from 'expo-checkbox';
@@ -54,30 +54,31 @@ const Marvel = () => {
       <Image style={styles.tinyLogo} source={require("../../medias/black-disney.png")} />
 
       <Text style={styles.title}>Les films du studio Marvel :</Text>
-      
-      <View style={styles.list}>
-      {films.map((film) => (
-  <View key={film._id} style={styles.wrap}>
 
-              <View  style={styles.card}>
-              <Checkbox
-  value={filmsVusIds.includes(film._id)}
-  onValueChange={(checked) => {
-    if (checked) {
-      marquerVu(film._id);
-    }
-  }}
-/>
-                <View style={styles.infos}>
-                  <Text style={styles.titreFilm}>{film.nom}</Text>
-                  <Text>Année de sortie : {film.date}</Text>
-                  <Text>Réalisé par : {film.realisateur}</Text>
+      <ScrollView contentContainerStyle={{paddingBottom:50}}>
+        <View style={styles.list} >
+            {films.map((film) => (
+            <View key={film._id} style={styles.wrap}>
+
+                <View  style={styles.card}>
+                  <Checkbox value={filmsVusIds.includes(film._id)}
+                      onValueChange={(checked) => {
+                        if (checked) {
+                          marquerVu(film._id);
+                        }
+                      }}
+  />
+                  <View style={styles.infos}>
+                    <Text style={styles.titreFilm}>{film.nom}</Text>
+                    <Text>Année de sortie : {film.date}</Text>
+                    <Text>Réalisé par : {film.realisateur}</Text>
+                  </View>
                 </View>
-              </View>
-          </View>
+            </View>
 
-        ))}
-      </View>
+          ))}
+        </View>
+      </ScrollView>
     </View>
 
     
@@ -88,6 +89,7 @@ const Marvel = () => {
 
     view:{
       alignItems: 'center',
+      flex: 1,  
 
     },
     title:{
