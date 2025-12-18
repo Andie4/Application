@@ -97,28 +97,6 @@ router.post("/signin", async (req, res) => {
 });
 
 
-// Pas de compte admin prévue finalment supprimer 
-// router.put(
-//   "/:id",
-//   passport.authenticate(["user", "admin"], {
-//     session: false,
-//     failWithError: true,
-//   }),
-//   async (req, res) => {
-//     try {
-//       if (req.user._id !== req.params.id && req.user._type !== "admin")
-//         return res.status(403).send({ ok: false, code: "FORBIDDEN" });
 
-//       const user = await UserObject.findById(req.params.id);
-//       const { first_name, last_name } = req.body;
-//       user.set({ first_name, last_name });
-//       await user.save();
-//       res.status(200).send({ ok: true, data: user });
-//     } catch (error) {
-//       console.log(error);
-//       res.status(500).send({ ok: false, code: SERVER_ERROR, error });
-//     }
-//   }
-// );
 
 module.exports = router;

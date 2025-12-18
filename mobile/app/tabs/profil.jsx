@@ -10,7 +10,8 @@ import { router } from "expo-router";
 const Profil = () => {
   // fonction de déconnexion (dans le store)
   const logout = useAuthStore((state) => state.logout);
-  
+  // pour récupérer les infos utilisateur
+  const user = useAuthStore((state) => state.user); 
 
   // déconnexion
   const handleLogout = () => {
@@ -27,9 +28,9 @@ const Profil = () => {
         <View style={profilStyles.account}>
           <Image style={profilStyles.pdp} source={require('../../medias/pdpUser.jpg')}/>
         </View>
-        <Text style={profilStyles.donnees}>Pseudo :leromeipsum</Text>
-        <Text style={profilStyles.donnees}>Mail : Lorem Ipsum</Text>
-        <Text style={profilStyles.donnees}>Âge : 21 ans</Text>
+        <Text style={profilStyles.donnees}>Prénom :{user.first_name}</Text>
+        <Text style={profilStyles.donnees}>Mail : {user.email}</Text>
+        <Text style={profilStyles.donnees}>Âge : {user.age}</Text>
         <TouchableOpacity style={profilStyles.logOut} onPress={handleLogout}>
           <Text style={profilStyles.textLogOut}>Déconnexion </Text>
         </TouchableOpacity>
