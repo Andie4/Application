@@ -116,6 +116,22 @@ router.post("/films", async (req, res) => {
 });
 
 
+//films pas vues 
+router.post("/films-pasVus", async (req, res) => {
+  const { userId, filmId } = req.body;
+
+  try {
+    const user = await UserObject.findById(userId);
+    user.filmsVues.deleteOne(filmId);
+    await user.save();
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false });
+  }
+});
+
 // affichage des films vues
 router.get("/films-vus/:userId", async (req, res) => {
   try {
@@ -129,5 +145,28 @@ router.get("/films-vus/:userId", async (req, res) => {
   }
 });
 
+
+router.put(
+  "/:id",
+  passport.authenticate(["user", "admin"], {
+    session: false,
+    failWithError: true,
+  }),
+  async (req, res) => {
+    try {
+      if (req.user._id !== req.params.id && req.user._type !== "admin")
+        return res.status(403).send({ ok: false, code: "FORBIDDEN" });
+
+      const user = await UserObject.findById(req.params.id);
+      const { first_name, last_name } = req.body;
+      user.set({ first_name, last_name });
+      await user.save();
+      res.status(200).send({ ok: true, data: user });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ ok: false, code: SERVER_ERROR, error });
+    }
+  }
+);
 
 module.exports = router;
