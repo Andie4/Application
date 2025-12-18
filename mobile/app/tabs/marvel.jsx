@@ -8,6 +8,7 @@ import useAuthStore from "../../store/authStore";
 const Marvel = () => {
   const [films, setFilms] = useState([]);
   const [filmsVusIds, setFilmsVusIds] = useState([]);
+  const [pasVus, setPasVus] = useState([])
   const userId = useAuthStore(state => state.user._id);
   
 
@@ -40,6 +41,16 @@ const Marvel = () => {
     
   };
 
+  const marquerPasVu = async (filmId) => {
+    fetch("http://172.20.10.2:3000/user/films-pasVus", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, filmId }),
+    });
+
+    setPasVus([...pasVus, filmId])
+    console.log("Le film est décoché");
+  };
   
   
   useEffect(() => {
@@ -64,10 +75,12 @@ const Marvel = () => {
                   <Checkbox value={filmsVusIds.includes(film._id)}
                       onValueChange={(checked) => {
                         if (checked) {
-                          marquerVu(film._id);
+                          marquerVu(film._id)
                         }
-                      }}
-  />
+                        if (!checked) {
+                          marquerPasVu(film._id)
+                        }
+                      }}/>
                   <View style={styles.infos}>
                     <Text style={styles.titreFilm}>{film.nom}</Text>
                     <Text>Année de sortie : {film.date}</Text>

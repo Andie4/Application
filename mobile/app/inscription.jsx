@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Button, Image, StyleSheet, Text, TextInput, View, Alert, Keyboard, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import api from '../services/api'; 
+import {KeyboardAvoidingView} from 'react-native';
 
 const App = () => {
   const [email, setEmail] = useState('');
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: 'white',
     fontSize: 30,
-    marginTop: 20,
+    marginTop: 50,
 
   }, 
   label: {
@@ -116,7 +117,8 @@ const styles = StyleSheet.create({
     height: 40 ,
     borderRadius: 10,
     marginTop: 5,
-    padding: 10
+    padding: 10,
+    color: "white"
   },
   tinyLogo: {
     height: 60,
