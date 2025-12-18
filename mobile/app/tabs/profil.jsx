@@ -58,13 +58,12 @@ const profilStyles = StyleSheet.create({
     fontSize: 30,
     backgroundColor: "#e63946",
     marginTop: 50,
-    width: 135,
+    width: 125,
     height: 50, 
     display: 'flex',
     justifyContent : 'center',
   },
   textLogOut :{
-    fontWeight: "bold",    //  -----> pas pris en compter chercher pourquoi 
     fontSize: 25,
     color: "white",
   },

@@ -9,14 +9,14 @@ const Home = () => (
 
       <View style={styles.view}>
           <Image style={styles.tinyLogo} source={require('../../medias/black-disney.png')}/>
-          <Text>Content de vous revoir ! Que comptez-vous regarder aujourd'hui ?</Text>
+          {/* <Text>Content de vous revoir ! Que comptez-vous regarder aujourd'hui ?</Text> */}
+          <Text style={styles.title}>Les différents studios :</Text>
+
         <View style={styles.infos}>
-          <Text style={styles}>Les différents studios :</Text>
           <View style={styles.banners}>
             <Link href="tabs/marvel"><Image style={styles.banner} source={require('../../medias/marvel-banner.png')}/> </Link>
-            {/* <Link href="tabs/disney"><Image style={styles.banner} source={require('../../medias/disney-banner.png')}/> </Link>
-            <Link href="tabs/pixar"><Image style={styles.banner} source={require('../../medias/pixar-banner.png')}/> </Link> */}
-
+            <Link href="tabs/disney"><Image style={styles.banner} source={require('../../medias/disney-banner.png')}/> </Link>
+            <Link href="tabs/pixar"><Image style={styles.banner} source={require('../../medias/pixar-banner.png')}/> </Link>
           </View>
         </View>
   
@@ -30,13 +30,19 @@ const Home = () => (
     view:{
         alignItems: 'center',
     },
+    title:{
+      fontWeight: "bold",
+      fontSize: 25,
+      marginBottom: 50,
+      marginTop: 20
+    },
     infos: {
 
         width:390,
         height: 400,
         alignItems:'center',
         marginBottom: 300,
-        marginTop: 70,
+        marginTop: 20,
 
     },
     tinyLogo: {
