@@ -1,9 +1,15 @@
 import { Text, View, StyleSheet, Alert } from "react-native";
 import { Image } from "expo-image";
 import { useEffect, useState } from "react";
+import { Checkbox } from 'expo-checkbox';
+import useAuthStore from "../../store/authStore";
+
 
 const Marvel = () => {
   const [films, setFilms] = useState([]);
+  const [filmsVusIds, setFilmsVusIds] = useState([]);
+  const userId = useAuthStore(state => state.user._id);
+  
 
   const fetchList = async () => {
     try {
@@ -15,27 +21,63 @@ const Marvel = () => {
     }
   };
 
+  const fetchFilmsVus = async () => {
+    const res = await fetch(`http://172.20.10.2:3000/user/films-vus/${userId}`);
+    const data = await res.json();
+    setFilmsVusIds(data); 
+  };
+
+  const marquerVu = async (filmId) => {
+    if (filmsVusIds.includes(filmId)) return;
+  
+    setFilmsVusIds([...filmsVusIds, filmId]);
+  
+    await fetch("http://172.20.10.2:3000/user/films", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, filmId }),
+    });
+    
+  };
+
+  
+  
   useEffect(() => {
     fetchList();
+    fetchFilmsVus();
   }, []);
+  
+
 
   return (
     <View style={styles.view}>
       <Image style={styles.tinyLogo} source={require("../../medias/black-disney.png")} />
 
       <Text style={styles.title}>Les films du studio Marvel :</Text>
-
-      <Text style={styles.recomandations}>Les films à voir :</Text>
+      
       <View style={styles.list}>
-        {films.map((film) => (
-          <View key={film._id} style={styles.card}>
-            <Text style={styles.titreFilm}>{film.nom}</Text>
-            <Text>Année de sortie : {film.date}</Text>
-            <Text>Réalisé par : {film.realisateur}</Text>
+      {films.map((film) => (
+  <View key={film._id} style={styles.wrap}>
+
+              <View  style={styles.card}>
+              <Checkbox
+  value={filmsVusIds.includes(film._id)}
+  onValueChange={(checked) => {
+    if (checked) {
+      marquerVu(film._id);
+    }
+  }}
+/>
+                <View style={styles.infos}>
+                  <Text style={styles.titreFilm}>{film.nom}</Text>
+                  <Text>Année de sortie : {film.date}</Text>
+                  <Text>Réalisé par : {film.realisateur}</Text>
+                </View>
+              </View>
           </View>
+
         ))}
       </View>
-      <Text style={styles.archive}>Les films déjà vus:</Text>
     </View>
 
     
@@ -60,10 +102,16 @@ const Marvel = () => {
       marginBottom: 20,
 
     },
+    infos:{
+      width:400
+    },
     titreFilm:{
       fontWeight: "bold",
       fontSize: 20,
       marginBottom: 10,
+    },
+    wrap:{
+      flexWrap: "wrap"
     },
     card:{
       marginBottom: 10,
@@ -77,6 +125,8 @@ const Marvel = () => {
       width: 350,
       borderColor: "white",
       boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+      flexWrap: "wrap"
+
     },
     archive:{
       marginTop: 30,

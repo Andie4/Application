@@ -10,7 +10,11 @@ const Schema = new mongoose.Schema(
     first_name: { type: String, trim: true },
     password: { type: String, required: true },
     last_login_at: { type: Date, default: Date.now },
-    age: { type: Number, required: false }
+    age: { type: Number, required: false },
+    filmsVues: [{
+      type: mongoose.Schema.Types.ObjectId, ref : "Film"
+    }],
+    
 
   },
   { timestamps: true }

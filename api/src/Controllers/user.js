@@ -28,6 +28,7 @@ router.post("/signup", async (req, res) => {
         });
       }
   
+// pas fonctionnel       
       // si l'utilisateur existe déjà
       const existing = await UserObject.findOne({ email });
       if (existing) {
@@ -39,7 +40,8 @@ router.post("/signup", async (req, res) => {
       }
   
       // nouvel utilisateur
-      const user = new UserObject({ email, password, first_name, age });
+      const user = new UserObject({ email, password, first_name, age,filmsVues: [], 
+      });
       await user.save();
   
       res.status(201).send({ ok: true, data: user });
@@ -97,6 +99,35 @@ router.post("/signin", async (req, res) => {
 });
 
 
+//films vues
+router.post("/films", async (req, res) => {
+  const { userId, filmId } = req.body;
+
+  try {
+    const user = await UserObject.findById(userId);
+    user.filmsVues.push(filmId);
+    await user.save();
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false });
+  }
+});
+
+
+// affichage des films vues
+router.get("/films-vus/:userId", async (req, res) => {
+  try {
+    const user = await UserObject.findById(req.params.userId);
+    if (!user) return res.json([]);
+
+    res.json(user.filmsVues || []);
+  } catch (err) {
+    console.error(err);
+    res.json([]);
+  }
+});
 
 
 module.exports = router;
