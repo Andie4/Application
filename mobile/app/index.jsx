@@ -8,6 +8,10 @@ const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+// //pour récupérer l'id lors du changement d'état des films 
+//   const [userId, setUserId] = useState(null);
+
+
   // Zustand
   const setUser = useAuthStore((state) => state.setUser);
   const setToken = useAuthStore((state) => state.setToken);
